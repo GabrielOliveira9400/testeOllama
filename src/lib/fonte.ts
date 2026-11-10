@@ -17,13 +17,13 @@ import {
 export type Fonte = "mongo" | "arquivo";
 
 export interface Atividades {
-  /** Atividades a corrigir e avaliar. */
+
   itens: ItemAvaliacao[];
-  /** Atividades corrigidas pelo professor usadas como exemplo no prompt. */
+
   exemplos: Exemplo[];
 }
 
-/** FONTE explícita no .env; sem ela, usa o Mongo se MONGODB_URI estiver definida. */
+//FONTE explícita no .env; sem ela, usa o Mongo se MONGODB_URI estiver definida por que pode usar arquivo tbm
 export function fonteSelecionada(): Fonte {
   const fonte = process.env["FONTE"];
   if (fonte === "mongo" || fonte === "arquivo") return fonte;
@@ -77,7 +77,7 @@ async function carregarDoMongo(): Promise<Atividades> {
       console.log(`Fórum: ${f.title.trim()} (${f._id.toString()}) | nota máxima: ${f.grade}`);
     }
 
-    // Projeção explícita: dados pessoais (cpf, aluno, IP) não são lidos do banco.
+    // Projeção explícita: dados pessoais (cpf, aluno) não são lidos do banco.
     const consulta = ForumPost.find({
       "forum._id": { $in: ids },
       grade: { $ne: null }, // exclui posts sem nota (campo ausente ou null)

@@ -5,9 +5,9 @@ import { limitar, media, regressaoLinear, type Reta } from "./lib/estatistica.ts
 import { validarRegistro, type RegistroSucesso } from "./types.ts";
 
 const TOLERANCIA = numeroEnv("TOLERANCIA", 0.5);
-/** Dispersão entre rodadas a partir da qual a correção é marcada como de baixa confiança. */
+//Dispersão entre rodadas a partir da qual a correção é marcada como de baixa confiança.
 const LIMIAR_DISPERSAO = numeroEnv("LIMIAR_DISPERSAO", 1.5);
-/** Mínimo de atividades válidas para estimar a calibração. */
+//Mínimo de atividades válidas para estimar a calibração.
 const MIN_CALIBRACAO = 5;
 
 interface RegistroComDiferenca extends RegistroSucesso {
@@ -33,7 +33,7 @@ function aplicar(reta: Reta, x: number, notaMaxima: number): number {
 
 interface Calibracao {
   global: Reta;
-  /** Medido com validação cruzada leave-one-out: cada nota é prevista por uma reta que não a viu. */
+  //Medido com validação cruzada leave-one-out: cada nota é prevista por uma reta que não a viu. */
   validada: Metricas;
 }
 

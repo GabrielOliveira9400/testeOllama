@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import type { Validador } from "../types.ts";
 
-/** Lê um arquivo JSONL e valida cada linha, informando o número da linha em caso de erro. */
+//Lê um arquivo JSONL e valida cada linha, informando o número da linha em caso de erro.
 export async function lerJsonl<T>(caminho: string, validar: Validador<T>): Promise<T[]> {
   const texto = await readFile(caminho, "utf-8");
   const itens: T[] = [];

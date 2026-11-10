@@ -8,7 +8,7 @@ export interface Mensagem {
   content: string;
 }
 
-/** Subconjunto de JSON Schema usado para forçar a saída estruturada. */
+//Subconjunto de JSON Schema usado para forçar a saída estruturada. */
 export interface JsonSchema {
   type: "object" | "string" | "number" | "integer" | "boolean" | "array";
   properties?: Record<string, JsonSchema>;
@@ -17,16 +17,16 @@ export interface JsonSchema {
 }
 
 export interface OpcoesChat {
-  /** Nome do modelo (ex.: "gemma4:e4b"). */
+  //Nome do modelo (ex.: "gemma4:e4b"). */
   model: string;
   messages: Mensagem[];
-  /** JSON Schema para forçar a saída estruturada. */
+
   format?: JsonSchema;
-  /** Temperatura baixa para notas estáveis. Padrão: 0. */
+  //Temperatura baixa para notas estáveis. Padrão: 0. */
   temperature?: number;
-  /** Desativa o modo de raciocínio (mais rápido). Padrão: false. */
+  //Desativa o modo de raciocínio (mais rápido). Padrão: false. */
   think?: boolean;
-  /** Semente de amostragem. Mude a cada rodada para obter respostas independentes. */
+  //Semente de amostragem. Mude a cada rodada para obter respostas independentes. */
   seed?: number;
 }
 
